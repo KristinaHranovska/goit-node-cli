@@ -40,9 +40,3 @@ async function invokeAction({ action, id, name, email, phone }) {
 }
 
 invokeAction(options);
-
-// invokeAction({ action: 'list' })
-// invokeAction({ action: 'get', id: 'Z5sbDlS7pCzNsnAHLtDJd' })
-// invokeAction({ action: 'get', id: 'Z5sbDlS7pCzNHLtDJd' })
-// invokeAction({ action: 'remove', id: 'AeHIrLTr6JkxGE6SN-0Rw' })
-// invokeAction({ action: "add", name: "Allen Raymond", email: "nulla.ante@vestibul.co.uk", phone: '(992) 914-3792' });
