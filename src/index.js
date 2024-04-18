@@ -1,4 +1,6 @@
-import { program } from "commander";
+const { program } = require('commander');
+const contacts = require('./contacts')
+
 program
     .option("-a, --action <type>", "choose action")
     .option("-i, --id <type>", "user id")
@@ -14,19 +16,23 @@ const options = program.opts();
 async function invokeAction({ action, id, name, email, phone }) {
     switch (action) {
         case "list":
-            // ...
+            const allContacts = await contacts.listContacts();
+            console.table(allContacts);
             break;
 
         case "get":
-            // ... id
+            const contactById = await contacts.getContactById(id)
+            console.table(contactById);
             break;
 
         case "add":
-            // ... name email phone
+            const contactAdd = await contacts.addContact(name, email, phone)
+            console.table(contactAdd);
             break;
 
         case "remove":
-            // ... id
+            const contactDeleteById = await contacts.removeContact(id);
+            console.table(contactDeleteById);
             break;
 
         default:
@@ -35,3 +41,9 @@ async function invokeAction({ action, id, name, email, phone }) {
 }
 
 invokeAction(options);
+
+// invokeAction({ action: 'list' })
+// invokeAction({ action: 'get', id: 'Z5sbDlS7pCzNsnAHLtDJd' })
+// invokeAction({ action: 'get', id: 'Z5sbDlS7pCzNHLtDJd' })
+// invokeAction({ action: 'remove', id: 'AeHIrLTr6JkxGE6SN-0Rw' })
+// invokeAction({ action: "add", name: "Allen Raymond", email: "nulla.ante@vestibul.co.uk", phone: '(992) 914-3792' });
