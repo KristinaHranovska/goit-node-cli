@@ -45,7 +45,7 @@ async function addContact(data) {
         const dataContacts = await listContacts();
         const newContact = {
             id: uuidv4(),
-            ...data
+            ...data,
         }
         dataContacts.push(newContact)
         await fs.writeFile(contactsPath, JSON.stringify(dataContacts, null, 2))
